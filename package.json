@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/nherment/seneca-facebook-auth",
   "dependencies": {
-    "passport-facebook": "1.0.3"
+    "passport-facebook": "1.0.3",
+    "lodash": "~3.10.0"
   },
   "peerDependencies": {
     "seneca-auth": "*",
