@@ -1,11 +1,13 @@
 seneca-facebook-auth - a seneca-auth plugin
 ============================================
 
-This plugin is used by [seneca-auth](https://www.npmjs.com/package/seneca-auth) for authenticating via facebook login. It uses [PassportJS](http://passportjs.org). The [seneca-auth](https://www.npmjs.com/package/seneca-auth) is the authentication plugin used by [Seneca](http://senecajs.org) toolkit. 
+This plugin is used by [seneca-auth](https://www.npmjs.com/package/seneca-auth) for authenticating via facebook login.
+It uses [PassportJS](http://passportjs.org). The [seneca-auth](https://www.npmjs.com/package/seneca-auth) is the
+authentication plugin used by [Seneca](http://senecajs.org) toolkit.
 
-For a gentle introduction to Seneca itself, see the senecajs.org site.
+For a gentle introduction to Seneca itself, see the [senecajs.org](http://senecajs.org) site.
 
-If you're using this plugin module, feel to contact on twitter if you have any questions! :) @rjrodger
+If you're using this plugin module, feel to contact on twitter if you have any questions! :) [@rjrodger](http://twitter.com/rjrodger)
 
 ### Install
 
@@ -41,7 +43,9 @@ used to request special access permissions to user data at login time. More info
 
 ## Other information
 
-There is provided a default seneca action that will prepare user data to a more convenient structure. If this data structure is not matching the expected user data structure used by your application, you can overwrite the seneca action and implement your own preapreLoginData action.
+There is provided a default seneca action that will prepare user data to a more convenient structure.
+If this data structure is not matching the expected user data structure used by your application, you can overwrite the
+seneca action and implement your own prepareLoginData action.
 
  - {role: 'facebook', cmd: 'prepareLoginData'}
 
