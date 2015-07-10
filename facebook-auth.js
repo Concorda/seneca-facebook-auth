@@ -5,6 +5,7 @@ var _ = require('lodash')
 module.exports = function (options) {
 
   var seneca = this
+  var service = 'facebook'
 
   var params = {
     clientID:       options.appId,
@@ -43,8 +44,18 @@ module.exports = function (options) {
       data.lastName = data.name.familyName
       delete data.name
     }
-    data.name = data.name || (data.firstName + ' ' + data.lastName),
-      cb(null, data)
+    data.name = data.firstName + ' ' + data.lastName
+
+    data[ service + '_id' ] = data.identifier
+
+    data.service = data.service || {}
+    data.service[ service ] = {
+      credentials: data.credentials,
+      userdata: data.userdata,
+      when: data.when
+    }
+
+    cb(null, data)
   }
 
   seneca.add({role: 'facebook', cmd: 'prepareLoginData'}, prepareLoginData)
