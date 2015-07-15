@@ -15,7 +15,7 @@ module.exports = function (options) {
   params = _.extend(params, options.serviceParams || {})
   var authPlugin = new FacebookStrategy(params,
     function (accessToken, refreshToken, profile, done) {
-      seneca.act({role: 'facebook', cmd: 'prepareLoginData', accessToken: accessToken, refreshToken: refreshToken, profile: profile}, done)
+      seneca.act({role: 'auth', prepare: 'facebook_login_data', accessToken: accessToken, refreshToken: refreshToken, profile: profile}, done)
     }
   )
 
@@ -58,7 +58,7 @@ module.exports = function (options) {
     cb(null, data)
   }
 
-  seneca.add({role: 'facebook', cmd: 'prepareLoginData'}, prepareLoginData)
+  seneca.add({role: 'auth', prepare: 'facebook_login_data'}, prepareLoginData)
 
   seneca.act({role: 'auth', cmd: 'register_service', service: 'facebook', plugin: authPlugin, conf: options})
 

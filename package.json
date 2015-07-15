@@ -18,6 +18,13 @@
     "plugin"
   ],
   "author": "Nicolas Herment <nherment@gmail.com>",
+  "contributors": [
+    {
+      "name": "Mircea Alexandru",
+      "email":"mircea.alexandru@gmail.com",
+      "url" : "https://github.com/mirceaalexandru"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nherment/seneca-facebook-auth/issues"

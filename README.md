@@ -45,9 +45,9 @@ used to request special access permissions to user data at login time. More info
 
 There is provided a default seneca action that will prepare user data to a more convenient structure.
 If this data structure is not matching the expected user data structure used by your application, you can overwrite the
-seneca action and implement your own prepareLoginData action.
+seneca action and implement your own facebook_login_data action.
 
- - {role: 'facebook', cmd: 'prepareLoginData'}
+ - {role: 'facebook', prepare: 'facebook_login_data'}
 
 The JSON object provided for this actions contains following data from Facebook login:
  - accessToken
