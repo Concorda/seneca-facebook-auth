@@ -38,6 +38,7 @@ module.exports = function (options) {
     data = _.extend({}, data, profile)
     if (data.emails && data.emails.length > 0){
       data.email = data.emails[0].value
+      data.nick = data.email
     }
     if (data.name && _.isObject(data.name)){
       data.firstName = data.name.givenName
