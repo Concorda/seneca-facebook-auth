@@ -1,5 +1,13 @@
+![Seneca](http://senecajs.org/files/assets/seneca-logo.png)
 seneca-facebook-auth - a seneca-auth plugin
 ============================================
+
+[![npm version][npm-badge]][npm-url]
+[![Build Status][travis-badge]][travis-url]
+[![Dependency Status][david-badge]][david-url]
+[![Gitter chat][gitter-badge]][gitter-url]
+
+Lead Maintainer: [Mircea Alexandru](https://github.com/mirceaalexandru)
 
 This plugin is used by [seneca-auth](https://www.npmjs.com/package/seneca-auth) for authenticating via facebook login.
 It uses [PassportJS](http://passportjs.org). The [seneca-auth](https://www.npmjs.com/package/seneca-auth) is the
@@ -65,7 +73,19 @@ The JSON object provided for this actions contains following data from Facebook 
  - refreshToken
  - profile
 
- ## License
+## Contributing
+ The [Senecajs org](https://github.com/senecajs/) encourage open participation. If you feel you can help in any way, be it with
+ documentation, examples, extra testing, or new features please get in touch.
+
+## License
  Copyright Mircea Alexandru and other contributors 2015, Licensed under [MIT][].
 
+ [npm-badge]: https://badge.fury.io/js/seneca-local-auth.svg
+ [npm-url]: https://badge.fury.io/js/seneca-local-auth
+ [david-badge]: https://david-dm.org/mirceaalexandru/seneca-local-auth.svg
+ [david-url]: https://david-dm.org/mirceaalexandru/seneca-local-auth
+ [gitter-badge]: https://badges.gitter.im/senecajs/seneca.png
+ [gitter-url]: https://gitter.im/senecajs/seneca
+ [travis-badge]: https://travis-ci.org/mirceaalexandru/seneca-local-auth.svg
+ [travis-url]: https://travis-ci.org/mirceaalexandru/seneca-local-auth
  [MIT]: ./LICENSE
