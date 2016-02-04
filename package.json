@@ -4,7 +4,9 @@
   "description": "facebook auth plugin for seneca-auth",
   "main": "facebook-auth.js",
   "scripts": {
-    "test": "mocha test --reporter spec"
+    "test": "mocha test --reporter spec",
+    "lint": "lab -dL",
+    "annotate": "docco facebook-auth.js -o doc"
   },
   "repository": {
     "type": "git",
@@ -31,8 +33,15 @@
   },
   "homepage": "https://github.com/nherment/seneca-facebook-auth",
   "dependencies": {
-    "passport-facebook": "1.0.3",
-    "lodash": "~3.10.0"
+    "passport-facebook": "2.1.0",
+    "lodash": "4.2.1"
+  },
+  "devDependnecies": {
+    "eslint-config-seneca": "1.x.x",
+    "eslint-config-standard": "4.x.x",
+    "eslint-plugin-hapi": "4.x.x",
+    "docco": "0.7.0",
+    "lab": "8.0.1"
   },
   "peerDependencies": {
     "seneca-auth": "*",

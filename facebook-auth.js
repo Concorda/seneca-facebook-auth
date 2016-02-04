@@ -3,14 +3,13 @@ var FacebookStrategy = require('passport-facebook').Strategy
 var _ = require('lodash')
 
 module.exports = function (options) {
-
   var seneca = this
   var service = 'facebook'
 
   var params = {
-    clientID:       options.appId,
-    clientSecret:   options.appSecret,
-    callbackURL:    options.urlhost + "/auth/facebook/callback"
+    clientID: options.appId,
+    clientSecret: options.appSecret,
+    callbackURL: options.urlhost + '/auth/facebook/callback'
   }
   params = _.extend(params, options.serviceParams || {})
   var authPlugin = new FacebookStrategy(params,
@@ -19,7 +18,7 @@ module.exports = function (options) {
     }
   )
 
-  var prepareLoginData = function(args, cb){
+  var prepareLoginData = function (args, cb) {
     var accessToken = args.accessToken
     var refreshToken = args.refreshToken
     var profile = args.profile
@@ -33,14 +32,14 @@ module.exports = function (options) {
         refresh: refreshToken},
       userdata: profile,
       when: new Date().toISOString()
-    };
+    }
 
     data = _.extend({}, data, profile)
-    if (data.emails && data.emails.length > 0){
+    if (data.emails && data.emails.length > 0) {
       data.email = data.emails[0].value
       data.nick = data.email
     }
-    if (data.name && _.isObject(data.name)){
+    if (data.name && _.isObject(data.name)) {
       data.firstName = data.name.givenName
       data.lastName = data.name.familyName
       delete data.name
