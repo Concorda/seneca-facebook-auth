@@ -18,13 +18,21 @@
     "plugin"
   ],
   "author": "Nicolas Herment <nherment@gmail.com>",
+  "contributors": [
+    {
+      "name": "Mircea Alexandru",
+      "email":"mircea.alexandru@gmail.com",
+      "url" : "https://github.com/mirceaalexandru"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nherment/seneca-facebook-auth/issues"
   },
   "homepage": "https://github.com/nherment/seneca-facebook-auth",
   "dependencies": {
-    "passport-facebook": "1.0.3"
+    "passport-facebook": "1.0.3",
+    "lodash": "~3.10.0"
   },
   "peerDependencies": {
     "seneca-auth": "*",
