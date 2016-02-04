@@ -2,9 +2,9 @@
 'use strict'
 
 
-var http = require('http')
+var Http = require('Http')
 
-var express = require('express')
+var Express = require('Express')
 var argv = require('optimist').argv
 
 
@@ -15,7 +15,7 @@ var seneca = require('seneca')()
 // the user plugin gives you user account business logic
 seneca.use('user')
 
-// the auth plugin handles HTTP authentication
+// the auth plugin handles Http authentication
 seneca.use('auth', {
   // redirects after login are needed for traditional multi-page web apps
   redirect: {
@@ -38,19 +38,19 @@ var conf = {
 seneca.use('facebook-auth')
 
 
-// use the express module in the normal way
-var app = express()
+// use the Express module in the normal way
+var app = Express()
 app.enable('trust proxy')
 
-app.use(express.cookieParser())
-app.use(express.query())
-app.use(express.bodyParser())
-app.use(express.methodOverride())
-app.use(express.json())
+app.use(Express.cookieParser())
+app.use(Express.query())
+app.use(Express.bodyParser())
+app.use(Express.methodOverride())
+app.use(Express.json())
 
-app.use(express.session({secret: 'seneca'}))
+app.use(Express.session({secret: 'seneca'}))
 
-app.use(express.static(__dirname + '/public'))
+app.use(Express.static(__dirname + '/public'))
 
 
 // add any middleware provided by seneca plugins
@@ -59,7 +59,7 @@ app.use(express.static(__dirname + '/public'))
 app.use(seneca.export('web'))
 
 
-// some express views
+// some Express views
 app.engine('ejs', require('ejs-locals'))
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
@@ -84,11 +84,11 @@ u.register({nick: 'u2', name: 'nu2', email: 'u2@example.com', password: 'u2', ac
 u.register({nick: 'a1', name: 'na1', email: 'a1@example.com', password: 'a1', active: true, admin: true})
 
 
-// create a HTTP server using the core Node API
+// create a Http server using the core Node API
 // this lets the admin plugin use web sockets
-var server = http.createServer(app)
+var server = Http.createServer(app)
 server.listen(conf.port)
 
-// visit http://localhost[:port]/admin to see the admin page
+// visit Http://localhost[:port]/admin to see the admin page
 // you'll need to logged in as an admin - user 'a1' above
 seneca.use('admin', {server: server})

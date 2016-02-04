@@ -20,7 +20,9 @@ npm install seneca-facebook-auth
 seneca-rabbitmq-transport's source can be read in an annotated fashion by,
 
 - running `npm run annotate`
-- viewing [online](http://github.com/senecajs/seneca-facebook-auth/doc/facebook-auth.html).
+- viewing [online](http://htmlpreview.github.com/?https://github.com/senecajs/seneca-facebook-auth/doc/facebook-auth.html).
+
+
 
 The annotated source can be found locally at [./doc/facebook-auth.html]().
 
