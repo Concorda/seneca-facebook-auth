@@ -15,6 +15,17 @@ If you're using this plugin module, feel to contact on twitter if you have any q
 npm install seneca-facebook-auth
 ```
 
+## About
+
+seneca-facebook-auth's source can be read in an annotated fashion by,
+
+- running `npm run annotate`
+- viewing [online](http://htmlpreview.github.com/?https://github.com/senecajs/seneca-facebook-auth/doc/facebook-auth.html).
+
+
+
+The annotated source can be found locally at [./doc/facebook-auth.html]().
+
 ### Using Facebook Auth
 
 When using seneca-auth the facebook auth must be initialized using:
@@ -53,3 +64,8 @@ The JSON object provided for this actions contains following data from Facebook 
  - accessToken
  - refreshToken
  - profile
+
+ ## License
+ Copyright Mircea Alexandru and other contributors 2015, Licensed under [MIT][].
+
+ [MIT]: ./LICENSE

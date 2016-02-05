@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>facebook-auth.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>facebook-auth.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-keyword">var</span> FacebookStrategy = <span class="hljs-built_in">require</span>(<span class="hljs-string">'passport-facebook'</span>).Strategy
+<span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'lodash'</span>)
+
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">options</span>) </span>{
+  <span class="hljs-keyword">var</span> seneca = <span class="hljs-keyword">this</span>
+  <span class="hljs-keyword">var</span> service = <span class="hljs-string">'facebook'</span>
+
+  <span class="hljs-keyword">var</span> params = {
+    clientID: options.appId,
+    clientSecret: options.appSecret,
+    callbackURL: options.urlhost + <span class="hljs-string">'/auth/facebook/callback'</span>
+  }
+  params = _.extend(params, options.serviceParams || {})
+  <span class="hljs-keyword">var</span> authPlugin = <span class="hljs-keyword">new</span> FacebookStrategy(params,
+    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">accessToken, refreshToken, profile, done</span>) </span>{
+      seneca.act({role: <span class="hljs-string">'auth'</span>, prepare: <span class="hljs-string">'facebook_login_data'</span>, accessToken: accessToken, refreshToken: refreshToken, profile: profile}, done)
+    }
+  )
+
+  <span class="hljs-keyword">var</span> prepareLoginData = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">args, cb</span>) </span>{
+    <span class="hljs-keyword">var</span> accessToken = args.accessToken
+    <span class="hljs-keyword">var</span> refreshToken = args.refreshToken
+    <span class="hljs-keyword">var</span> profile = args.profile
+
+    <span class="hljs-keyword">var</span> data = {
+      identifier: <span class="hljs-string">''</span> + profile.id,
+      nick: profile.displayName,
+      username: profile.username,
+      credentials: {
+        access: accessToken,
+        refresh: refreshToken},
+      userdata: profile,
+      when: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().toISOString()
+    }
+
+    data = _.extend({}, data, profile)
+    <span class="hljs-keyword">if</span> (data.emails &amp;&amp; data.emails.length &gt; <span class="hljs-number">0</span>) {
+      data.email = data.emails[<span class="hljs-number">0</span>].value
+      data.nick = data.email
+    }
+    <span class="hljs-keyword">if</span> (data.name &amp;&amp; _.isObject(data.name)) {
+      data.firstName = data.name.givenName
+      data.lastName = data.name.familyName
+      <span class="hljs-keyword">delete</span> data.name
+    }
+    data.name = data.firstName + <span class="hljs-string">' '</span> + data.lastName
+
+    data[ service + <span class="hljs-string">'_id'</span> ] = data.identifier
+
+    data.service = data.service || {}
+    data.service[ service ] = {
+      credentials: data.credentials,
+      userdata: data.userdata,
+      when: data.when
+    }
+
+    cb(<span class="hljs-literal">null</span>, data)
+  }
+
+  seneca.add({role: <span class="hljs-string">'auth'</span>, prepare: <span class="hljs-string">'facebook_login_data'</span>}, prepareLoginData)
+
+  seneca.act({role: <span class="hljs-string">'auth'</span>, cmd: <span class="hljs-string">'register_service'</span>, service: <span class="hljs-string">'facebook'</span>, plugin: authPlugin, conf: options})
+
+  <span class="hljs-keyword">return</span> {
+    name: <span class="hljs-string">'facebook-auth'</span>
+  }
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
