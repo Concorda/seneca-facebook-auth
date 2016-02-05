@@ -33,9 +33,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nherment/seneca-facebook-auth/issues"
+    "url": "https://github.com/senecajs/seneca-facebook-auth/issues"
   },
-  "homepage": "https://github.com/nherment/seneca-facebook-auth",
+  "homepage": "https://github.com/senecajs/seneca-facebook-auth",
   "dependencies": {
     "passport-facebook": "2.1.0",
     "lodash": "4.2.1"
