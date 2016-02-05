@@ -7,8 +7,6 @@ seneca-facebook-auth - a seneca-auth plugin
 [![Dependency Status][david-badge]][david-url]
 [![Gitter chat][gitter-badge]][gitter-url]
 
-Lead Maintainer: [Mircea Alexandru](https://github.com/mirceaalexandru)
-
 This plugin is used by [seneca-auth](https://www.npmjs.com/package/seneca-auth) for authenticating via facebook login.
 It uses [PassportJS](http://passportjs.org). The [seneca-auth](https://www.npmjs.com/package/seneca-auth) is the
 authentication plugin used by [Seneca](http://senecajs.org) toolkit.
@@ -78,7 +76,7 @@ The JSON object provided for this actions contains following data from Facebook 
  documentation, examples, extra testing, or new features please get in touch.
 
 ## License
- Copyright Mircea Alexandru and other contributors 2015, Licensed under [MIT][].
+ Copyright Nicolas Herment and other contributors 2015, Licensed under [MIT][].
 
  [npm-badge]: https://badge.fury.io/js/seneca-local-auth.svg
  [npm-url]: https://badge.fury.io/js/seneca-local-auth
